@@ -3,7 +3,6 @@ import Authorization_main from "@/components/Authorization_main.vue";
 import Main_page from "@/components/Main_page.vue";
 import Boards from "@/components/Boards.vue";
 
--Boards
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
