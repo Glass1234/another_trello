@@ -1,9 +1,6 @@
 <template>
   <div class="bg-[#f9fafc]">
-    <div class="min-h-screen"
-         style="background: url('@/assets/img/signup-left.svg') no-repeat left bottom,
-                             url('@/assets/img/signup-right.svg') no-repeat right bottom;
-                             background-size: 20%">
+    <div class="min-h-screen bg-img">
       <header>
         <div @click="go_main" class="pt-[40px]">
           <img class="m-auto cursor-pointer"
@@ -55,16 +52,19 @@
 </template>
 
 <script>
+import user_data from "@/data/user_data";
+
 export default {
   name: "Authorization_main",
   data() {
     return {
       email_login: "", passwd_login: "",
-      email_sign: "", passwd1_sign: "", passwd2_sign: ""
+      email_sign: user_data[0].sign_email, passwd1_sign: "", passwd2_sign: ""
     }
   },
   methods: {
     go_main() {
+      console.log(this.email_sign)
       this.$router.push('/')
     }
   }
@@ -72,5 +72,10 @@ export default {
 </script>
 
 <style scoped>
+.bg-img {
+  background: url("@/assets/img/signup-left.svg") no-repeat left bottom,
+  url("@/assets/img/signup-right.svg") no-repeat right bottom;
+  background-size: 20%
+}
 
 </style>

@@ -11,7 +11,7 @@
       </div>
       <div class="pt-[30px]">
         <input type="email" placeholder="Email" class="p-[12px] rounded-[0.3rem]" v-model="user_email">
-        <button @click="go_auth"
+        <button @click="go_sign"
                 class="p-[12px] ml-[10px] rounded-[0.3rem] ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e]">
           <span class="text-white"> Sign up-it's free!</span></button>
         <div class="flex pt-[15px] text-white">
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import user_data from "@/data/user_data";
+
 export default {
   name: "Main_web",
   data() {
@@ -38,6 +40,10 @@ export default {
   methods: {
     go_auth() {
       this.$router.push('/auth')
+    },
+    go_sign() {
+      user_data[0].sign_email = this.user_email
+      this.go_auth()
     }
   }
 }
@@ -45,7 +51,8 @@ export default {
 
 <style scoped>
 .cloud {
-  background-image: url('@/assets/icons/white-wave-bg.svg'), linear-gradient(90deg, #354dc0, #813ba8, #a52a8a);
+  background-image: url('@/assets/icons/white-wave-bg.svg'),
+  linear-gradient(90deg, #354dc0, #813ba8, #a52a8a);
   background-size: 100% auto;
 }
 </style>
