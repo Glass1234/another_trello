@@ -36,7 +36,7 @@ export default {
   name: "Header_",
   data() {
     return {}
-  },
+  }
 }
 </script>
 

@@ -5,7 +5,7 @@
                              url('@/assets/img/signup-right.svg') no-repeat right bottom;
                              background-size: 20%">
       <header>
-        <div @click="GoMain" class="pt-[40px]">
+        <div @click="go_main" class="pt-[40px]">
           <img class="m-auto cursor-pointer"
                src="@/assets/icons/trello-logo-blue.svg"
                alt="img">
@@ -21,9 +21,9 @@
             <h3 class="font-bold text-[#5e6c84] text-center mb-[25px]">Log in to Trello</h3>
             <div class="flex flex-col"
                  style="font-family: 'Roboto-Light',sans-serif">
-              <input type="text" placeholder="Enter email"
+              <input type="email" placeholder="Enter email" v-model="email_login"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
-              <input type="text" placeholder="Enter passwd"
+              <input type="password" placeholder="Enter passwd" v-model="passwd_login"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
               <button class="bg-[#5aac44] hover:bg-[#61BD4F] rounded-[5px] py-[8px]"><span class="text-white font-bold"
                                                                                            style="font-family: 'SpaceGrotesk-Bold',sans-serif">Login</span>
@@ -37,11 +37,11 @@
                 style="font-family: 'SpaceGrotesk-Bold',sans-serif">Sign up for Trello</h3>
             <div class="flex flex-col"
                  style="font-family: 'Roboto-Light',sans-serif">
-              <input type="text" placeholder="Enter email"
+              <input type="email" placeholder="Enter email" v-model="email_sign"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
-              <input type="text" placeholder="Enter passwd"
+              <input type="password" placeholder="Enter passwd" v-model="passwd1_sign"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
-              <input type="text" placeholder="Enter passwd"
+              <input type="password" placeholder="Enter passwd" v-model="passwd2_sign"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
               <button class="bg-[#0066ff] hover:bg-[#003f9e] rounded-[5px] py-[8px]"><span class="text-white font-bold"
                                                                                            style="font-family: 'SpaceGrotesk-Bold',sans-serif">Sing up</span>
@@ -57,8 +57,14 @@
 <script>
 export default {
   name: "Authorization_main",
+  data() {
+    return {
+      email_login: "", passwd_login: "",
+      email_sign: "", passwd1_sign: "", passwd2_sign: ""
+    }
+  },
   methods: {
-    GoMain() {
+    go_main() {
       this.$router.push('/')
     }
   }

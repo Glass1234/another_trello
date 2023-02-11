@@ -10,8 +10,9 @@
         </div>
       </div>
       <div class="pt-[30px]">
-        <input type="text" placeholder="Email" class="p-[12px] rounded-[0.3rem]">
-        <button class="p-[12px] ml-[10px] rounded-[0.3rem] ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e]">
+        <input type="email" placeholder="Email" class="p-[12px] rounded-[0.3rem]" v-model="user_email">
+        <button @click="go_auth"
+                class="p-[12px] ml-[10px] rounded-[0.3rem] ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e]">
           <span class="text-white"> Sign up-it's free!</span></button>
         <div class="flex pt-[15px] text-white">
           <button><span class="underline">Watch video</span></button>
@@ -30,7 +31,15 @@
 
 <script>
 export default {
-  name: "Main_web"
+  name: "Main_web",
+  data() {
+    return {user_email: ""}
+  },
+  methods: {
+    go_auth() {
+      this.$router.push('/auth')
+    }
+  }
 }
 </script>
 
