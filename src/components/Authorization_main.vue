@@ -40,7 +40,19 @@
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
               <input type="password" placeholder="Enter passwd" v-model="passwd2_sign"
                      class="rounded-[3px] border-[#dfe1e6] border-[2px] p-[7px] mb-[17px] font-light">
-              <button class="bg-[#0066ff] hover:bg-[#003f9e] rounded-[5px] py-[8px]"><span class="text-white font-bold"
+              <template v-if="is_valid===1">
+                <p>Укажите почту</p>
+                <br>
+              </template>
+              <template v-else-if="is_valid===2">
+                <p>Пароли не совпадают (</p>
+                <br>
+              </template>
+              <template v-else-if="is_valid===3">
+                <p>Слишком короткий пароль</p>
+              </template>
+              <button @click="sign_up"
+                      class="bg-[#0066ff] hover:bg-[#003f9e] rounded-[5px] py-[8px]"><span class="text-white font-bold"
                                                                                            style="font-family: 'SpaceGrotesk-Bold',sans-serif">Sing up</span>
               </button>
             </div>
@@ -59,13 +71,34 @@ export default {
   data() {
     return {
       email_login: "", passwd_login: "",
-      email_sign: user_data[0].sign_email, passwd1_sign: "", passwd2_sign: ""
+      email_sign: user_data[0].sign_email, passwd1_sign: "", passwd2_sign: "",
+      is_valid: 0, // 0 = valid
+      tmp: ""
     }
   },
   methods: {
     go_main() {
       console.log(this.email_sign)
       this.$router.push('/')
+    },
+    sign_up() {
+      console.log(this.email_sign, this.passwd1_sign, this.passwd2_sign)
+      if (this.email_sign === "") {
+        this.is_valid = 1
+        return
+      }
+      if (this.passwd1_sign !== this.passwd2_sign) {
+        this.is_valid = 2
+        return
+      }
+      if (this.passwd1_sign.length <= 8) {
+        this.is_valid = 3
+        return
+      }
+      if (this.passwd1_sign === this.passwd2_sign && this.passwd1_sign.length >= 8 && this.email_sign !== "") {
+        this.is_valid = 0
+      }
+
     }
   }
 }
