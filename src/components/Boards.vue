@@ -84,7 +84,7 @@
           <span class="text-[16px]">Отредактировать или удалить доску</span>
           <br>
           <ul>
-            <li v-for="(board) in boards" v-bind:key="board">
+            <li v-for="(board,index) in boards" v-bind:key="board">
               <div class="text-[13px] rounded my-[10px] flex justify-between"
                    :style="{'background-color': board.background_color}">
                 <div class="p-[10px]">
@@ -98,7 +98,7 @@
                     <div class="bg-white inline rounded p-[2px]">Цвет фона:</div>
                     <br>
                     <input type="text" placeholder="#fff" v-model="board.background_color"
-                           class="rounded p-[3px] mt-[3px]">
+                           class="rounded p-[3px] mt-[3px]" @input="set_color($event, index)">
                   </div>
                 </div>
                 <div class="p-[10px] text-[16px] flex flex-col justify-between">
@@ -107,8 +107,14 @@
                         class="px-[10px] py-[3px] text-white">Удалить доску</span></button>
                   </div>
                   <div class="flex">
-                    <button class="bg-green-500 rounded border-black border-2"><span
-                        class="px-[10px] py-[3px] text-black">Сохранить</span></button>
+                    <template v-if="boards_not_valid.indexOf(index) === -1">
+                      <button class="bg-green-500 rounded border-black border-2"><span
+                          class="px-[10px] py-[3px] text-black">Сохранить</span></button>
+                    </template>
+                    <template v-else>
+                      <button class="bg-green-500 rounded border-black border-2 cursor-not-allowed" disabled><span
+                          class="px-[10px] py-[3px] text-black">Сохранить</span></button>
+                    </template>
                     <button class="bg-gray-500 rounded border-black border-2 ml-[10px]"><span
                         class="px-[10px] py-[3px] text-black">Отмена</span></button>
                   </div>
@@ -147,6 +153,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "v-Boards",
   data() {
@@ -167,6 +175,7 @@ export default {
         {name: "доска 2", background_color: "#999"},
         {name: "Дос3", background_color: "#111"},
         {name: "dasdqwarw", background_color: "#FFF"},],
+      boards_not_valid: []
     }
   },
   methods: {
@@ -175,6 +184,22 @@ export default {
     },
     go_board(index) {
       console.log(index)
+    },
+    set_color($event, index) {
+      let color = $event.target.value
+      let hexColorRegex = require('hex-color-regex')
+      const is_valid = hexColorRegex().test(color)
+      const index_of = this.boards_not_valid.indexOf(index)
+
+      if (is_valid === false || color.length >= 8) {
+        if (index_of === -1) {
+          this.boards_not_valid.push(index)
+        }
+      } else {
+        if (index_of !== -1) {
+          this.boards_not_valid.splice(index_of, 1)
+        }
+      }
     }
   }
 }
