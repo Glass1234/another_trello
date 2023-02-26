@@ -22,6 +22,8 @@
       </div>
     </div>
     <div class="flex">
+      <router-link class="px-[24px] flex items-center duration-300 bg-[#1ac320] hover:bg-[#308b2b]"
+                   to="boards"><span class="text-white">Go app</span></router-link>
       <router-link class="px-[24px] flex items-center"
                    to="auth"><span>Log in</span></router-link>
       <router-link class="px-[24px] text-white ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e] flex items-center"

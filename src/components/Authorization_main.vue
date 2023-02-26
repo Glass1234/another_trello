@@ -147,7 +147,7 @@ export default {
       }
       this.tmp = res
       if (res.status_code === 0) {
-        user_data[0].token = this.tmp.access_token
+        localStorage.token = this.tmp.access_token
         this.$router.push('/boards')
       }
     },

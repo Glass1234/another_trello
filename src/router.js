@@ -10,6 +10,6 @@ export default createRouter({
         {path: '/', name: 'main_web', component: Main_page},
         {path: '/auth', name: 'auth', component: Authorization_main},
         {path: '/boards', name: 'boards', component: Boards},
-        {path: '/board:id', name: 'board', component: Board, props: true,},
+        {path: '/board/:id', name: 'board', component: Board, props: true,},
     ]
 })
