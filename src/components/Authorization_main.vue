@@ -108,9 +108,6 @@ export default {
     }
   },
   methods: {
-    delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms))
-    },
     is_valid_mail(mail) {
       const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
       return EMAIL_REGEXP.test(mail)
@@ -177,7 +174,7 @@ export default {
       const res = await this.send_reg(data)
       if (res.status_code === 1) {
         this.is_success_sign = false
-      } else if (res.status_code === 0) {
+      } else {
         this.is_success_sign = true
       }
       this.tmp = res
@@ -187,27 +184,12 @@ export default {
     },
     send_reg: async function (data) {
       const url = user_data[0].api_url + '/reg'
-      console.log('requests from:', url)
-      let res_data = null
-
-      const res = await axios.post(url, data)
-      res_data = res.data
-      while (res_data === null) {
-        console.log('&');
-        await this.delay(100)
-      }
-      return res_data
+      return (await axios.post(url, data)).data
     },
     send_auth: async function (data, data_token) {
       const tk_url = user_data[0].api_url + '/token'
-      console.log('requests from:', tk_url)
-      const res_ = await axios.post(tk_url, new URLSearchParams(
-          data_token))
-      while (res_.data === null) {
-        console.log('&');
-        await this.delay(100)
-      }
-      return res_.data
+      return (await axios.post(tk_url, new URLSearchParams(
+          data_token))).data
     },
   }
 }

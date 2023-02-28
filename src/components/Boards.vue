@@ -36,7 +36,7 @@
                  src="@/assets/icons/format_paint_FILL0_wght400_GRAD0_opsz48.svg"
                  alt="img">
             <span class="text-[#5e6c84]">Выбирите фон:</span>
-            <ul class="flex w-[230px] justify-evenly">
+            <ul class="flex w-[230px] justify-evenly m-0 p-0">
               <li class="color_default color_select bg-[#0079bf]" @click="board_background_color = '#0079bf'">
                 <template v-if="board_background_color === '#0079bf'">
                   <button>+</button>
@@ -73,7 +73,7 @@
             <p class="text-[#5e6c84]">Заголовок доски<span class="text-red-600"> *</span></p>
             <input type="text"
                    v-model="board_name"
-                   class="w-[280px] h-[34px] my-[7px] border-2 border-[#8086f2] rounded focus:border-[#eb4034] hover:border-[#eb4034] duration-100">
+                   class="w-[280px] h-[34px] my-[7px] p-[5px] border-2 border-[#8086f2] rounded focus:border-[#eb4034] hover:border-[#eb4034] duration-100">
             <div class="flex items-center" :class="{ 'hidden': board_name.length > 0 }">
               <img src="@/assets/icons/waving_hand_FILL0_wght400_GRAD0_opsz48.svg" alt="img" class="h-[20px]">
               <span style="font-family: 'Roboto-Regular',sans-serif" class="pl-[5px]">
@@ -316,31 +316,19 @@ export default {
     },
     req_get_all_boards: async function () {
       const allBoards_url = user_data[0].api_url + '/boards'
-      console.log('requests from:', allBoards_url)
-
-      const res = await axios.get(allBoards_url, this.create_config())
-      return res
+      return await axios.get(allBoards_url, this.create_config())
     },
     req_post_create_board: async function (data) {
       const create_board_url = user_data[0].api_url + '/boards'
-      console.log('requests from:', create_board_url)
-
-      const res = await axios.post(create_board_url, data, this.create_config())
-      return res
+      return await axios.post(create_board_url, data, this.create_config())
     },
     req_put_board: async function (data) {
       const post_edit_board = user_data[0].api_url + '/boards'
-      console.log('requests from:', post_edit_board)
-
-      const res = await axios.put(post_edit_board, data, this.create_config())
-      return res
+      return await axios.put(post_edit_board, data, this.create_config())
     },
     req_delete_board: async function (id) {
       const delete_board_url = `${user_data[0].api_url}/boards?board_id=${id.toString()}`
-      console.log('requests from:', delete_board_url)
-
-      const res = await axios.delete(delete_board_url, this.create_config())
-      return res
+      return await axios.delete(delete_board_url, this.create_config())
     },
   }
 }
@@ -358,77 +346,4 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 }
-
-
-.alert-arrow {
-  border: 1px solid #60c060;
-  color: #54a754;
-}
-
-.alert-arrow .alert-icon {
-  position: relative;
-  width: 3rem;
-  background-color: #60c060;
-}
-
-.alert-arrow .alert-icon::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-top: .75rem solid transparent;
-  border-bottom: .75rem solid transparent;
-  border-left: .75rem solid #60c060;
-  right: -.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.alert-arrow .close {
-  font-size: 1rem;
-  color: #cacaca;
-}
-
-/* primary */
-.alert-arrow-primary {
-  border: 1px solid #4d90fd;
-  color: #3a8ace;
-}
-
-.alert-arrow-primary .alert-icon {
-  background-color: #4d90fd;
-}
-
-.alert-arrow-primary .alert-icon::after {
-  border-left: .75rem solid #4d90fd;
-}
-
-/* warning */
-.alert-arrow-warning {
-  border: 1px solid #fc9700;
-  color: #d68000;
-}
-
-.alert-arrow-warning .alert-icon {
-  background-color: #fc9700;
-}
-
-.alert-arrow-warning .alert-icon::after {
-  border-left: .75rem solid #fc9700;
-}
-
-/* danger */
-.alert-arrow-danger {
-  border: 1px solid #da4932;
-  color: #ca452e;
-}
-
-.alert-arrow-danger .alert-icon {
-  background-color: #da4932;
-}
-
-.alert-arrow-danger .alert-icon::after {
-  border-left: .75rem solid #da4932;
-}
-
 </style>

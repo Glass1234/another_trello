@@ -293,52 +293,31 @@ export default {
     },
     req_get_board: async function () {
       const allBoards_url = user_data[0].api_url + '/board'
-      console.log('requests from:', allBoards_url)
-
-      const res = await axios.get(allBoards_url, this.create_config())
-      return res
+      return await axios.get(allBoards_url, this.create_config())
     },
     req_post_board: async function (id) {
       const url = `${user_data[0].api_url}/board?board_id=${id.toString()}`
-      console.log('requests from:', url)
-
-      const res = await axios.post(url, {}, this.create_config())
-      return res
+      return await axios.post(url, {}, this.create_config())
     },
     req_post_createColum: async function (data) {
       const url = `${user_data[0].api_url}/createColum?colum_name=${data.name}&board_id=${data.id.toString()}`
-      console.log('requests from:', url)
-
-      const res = await axios.post(url, {}, this.create_config())
-      return res
+      return await axios.post(url, {}, this.create_config())
     },
     req_delete_colum: async function (data) {
       const url = `${user_data[0].api_url}/colum?column_id=${data.id}&board_id=${data.board_id.toString()}`
-      console.log('requests from:', url)
-
-      const res = await axios.delete(url, this.create_config())
-      return res
+      return await axios.delete(url, this.create_config())
     },
     req_post_task: async function (data) {
       const url = `${user_data[0].api_url}/task?board_id=${data.board_id}&column_id=${data.column_id}&msg=${data.msg}`
-      console.log('requests from:', url)
-
-      const res = await axios.post(url, {}, this.create_config())
-      return res
+      return await axios.post(url, {}, this.create_config())
     },
     req_delete_task: async function (id) {
       const url = `${user_data[0].api_url}/task?task_id=${id}`
-      console.log('requests from:', url)
-
-      const res = await axios.delete(url, this.create_config())
-      return res
+      return await axios.delete(url, this.create_config())
     },
     req_put_task: async function (data) {
       const url = `${user_data[0].api_url}/task`
-      console.log('requests from:', url)
-
-      const res = await axios.put(url, data, this.create_config())
-      return res
+      return await axios.put(url, data, this.create_config())
     }
   },
 }
