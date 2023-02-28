@@ -1,8 +1,8 @@
 import {createRouter, createWebHashHistory} from "vue-router";
-import Authorization_main from "@/components/Authorization_main.vue";
-import Main_page from "@/components/Main_page.vue";
-import Boards from "@/components/Boards.vue";
-import Board from "@/components/Board.vue";
+import Authorization_main from "@/views/Authorization_main.vue";
+import Main_page from "@/views/Main_page.vue";
+import Boards from "@/views/Boards.vue";
+import Board from "@/views/Board.vue";
 
 export default createRouter({
     history: createWebHashHistory(),

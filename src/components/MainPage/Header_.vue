@@ -1,6 +1,5 @@
 <template>
-  <header class="flex justify-around header_main"
-          style="font-family: 'SpaceGrotesk-Bold', sans-serif;">
+  <header class="flex justify-around header_main SpaceGroteskB">
     <div class="flex">
       <div class="flex ">
         <div class="flex items-end">
@@ -12,9 +11,10 @@
           <h1 class="text-[#253858] font-bold">Trello</h1>
         </div>
       </div>
-      <div class="flex font-bold"
-           style="font-family: 'Roboto-Light', sans-serif;">
-        <button class="px-[16px] hover:text-[#034efc]"><span>Features</span></button>
+      <div class="flex font-bold RobotoL">
+        <button class=" px-[16px] hover:text-[#034efc]">
+          <span>Features</span>
+        </button>
         <button class="px-[16px] hover:text-[#034efc]"><span>Solutions</span></button>
         <button class="px-[16px] hover:text-[#034efc]"><span>Plans</span></button>
         <button class="px-[16px] hover:text-[#034efc]"><span>Pricing</span></button>
@@ -26,8 +26,9 @@
                    to="boards"><span class="text-white">Go app</span></router-link>
       <router-link class="px-[24px] flex items-center no-underline"
                    to="auth"><span>Log in</span></router-link>
-      <router-link class="px-[24px] text-white ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e] flex items-center no-underline"
-                   to="auth"><span>Get Trello for free</span>
+      <router-link
+          class="px-[24px] text-white ease-in duration-300 bg-[#0066ff] hover:bg-[#003f9e] flex items-center no-underline"
+          to="auth"><span>Get Trello for free</span>
       </router-link>
     </div>
   </header>
@@ -43,5 +44,11 @@ export default {
 </script>
 
 <style scoped>
+.RobotoL {
+  font-family: 'Roboto-Light', sans-serif;
+}
 
+.SpaceGroteskB {
+  font-family: 'SpaceGrotesk-Bold', sans-serif;
+}
 </style>

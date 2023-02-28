@@ -1,7 +1,6 @@
 <template>
   <div class="bg-no-repeat bg-bottom bg-auto flex justify-center pt-[100px] cloud">
-    <div class="flex flex-col"
-         style="font-family: 'SpaceGrotesk-Light', sans-serif">
+    <div class="flex flex-col SpaceGroteskL">
       <div>
         <div class="text-white font-semibold">
           <p class="text-[48px] leading-tight">Trello brings all your<br> tasks, teammates, and<br> tools
@@ -54,5 +53,9 @@ export default {
   background-image: url('@/assets/icons/white-wave-bg.svg'),
   linear-gradient(90deg, #354dc0, #813ba8, #a52a8a);
   background-size: 100% auto;
+}
+
+.SpaceGroteskL {
+  font-family: 'SpaceGrotesk-Light', sans-serif
 }
 </style>

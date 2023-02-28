@@ -1,6 +1,5 @@
 <template>
-  <div class="p-[15px] flex w-full"
-       style="font-family: 'Roboto-Medium',sans-serif">
+  <div class="p-[15px] flex w-full RobotoM">
     <div class="text-[14px] w-[240px]">
       <div class="flex flex-col select-none">
         <div @click="tab_content = 1;board_success = false;board_error = false"
@@ -29,7 +28,6 @@
     <div class="border-l-[3px] mx-[3px]"></div>
     <div class="w-full bg-[#f5f6f7] rounded-[5px]">
       <div class="p-[5px] text-[13px]">
-
         <template v-if="tab_content === 1">
           <div class="flex items-center">
             <img class="h-[22px]"
@@ -76,7 +74,7 @@
                    class="w-[280px] h-[34px] my-[7px] p-[5px] border-2 border-[#8086f2] rounded focus:border-[#eb4034] hover:border-[#eb4034] duration-100">
             <div class="flex items-center" :class="{ 'hidden': board_name.length > 0 }">
               <img src="@/assets/icons/waving_hand_FILL0_wght400_GRAD0_opsz48.svg" alt="img" class="h-[20px]">
-              <span style="font-family: 'Roboto-Regular',sans-serif" class="pl-[5px]">
+              <span class="pl-[5px] RobotoR">
               Укажите название доски.
             </span>
             </div>
@@ -85,18 +83,15 @@
             <template v-if="board_name.length > 0">
               <button class="btn btn-primary"
                       @click="creat_board">
-              <span style="font-family: Roboto-Regular,sans-serif"
-                    class="text-white text-[14px] px-[60px] py-[7px]">Создать</span>
+                <span class="text-white text-[14px] px-[60px] py-[7px] RobotoR">Создать</span>
               </button>
             </template>
             <template v-else>
               <button disabled class="btn btn-secondary cursor-not-allowed">
-              <span style="font-family: Roboto-Regular,sans-serif"
-                    class="text-white text-[14px] px-[60px] py-[7px]">Создать</span>
+                <span class="text-white text-[14px] px-[60px] py-[7px] RobotoR">Создать</span>
               </button>
             </template>
           </div>
-
           <br>
           <div v-bind:class="board_success ? 'show':'hidden'"
                class="ml-[4px] alert alert-success alert-dismissible fade flex justify-between">
@@ -112,9 +107,7 @@
               X
             </button>
           </div>
-
         </template>
-
         <template v-if="tab_content === 2">
           <span class="text-[16px]">Отредактировать или удалить доску</span>
           <ul class="m-0 p-0">
@@ -135,8 +128,7 @@
                            class="rounded p-[3px] mt-[3px]" @input="set_color($event, index)">
                   </div>
                 </div>
-                <div class="p-[10px] text-[16px] flex flex-col justify-between"
-                     style="font-family: Roboto-Regular,sans-serif">
+                <div class="p-[10px] text-[16px] flex flex-col justify-between RobotoR">
                   <div class="flex content-end">
                     <button @click="delete_board(index)"
                             class="btn btn-danger">Удалить доску
@@ -159,9 +151,7 @@
               </div>
             </li>
           </ul>
-
         </template>
-
         <template v-if="tab_content === 3">
           <div>
             <span class="text-[16px]">Ваши доски:</span>
@@ -177,13 +167,11 @@
                      v-if="board.name.indexOf(search_board)!==-1"
                      @click="go_board(index)">
                   <span class="bg-white rounded p-[5px]">{{ board.name }}</span>
-
                 </div>
               </li>
             </ul>
           </div>
         </template>
-
       </div>
     </div>
   </div>
@@ -345,5 +333,13 @@ export default {
   border-radius: 0.25rem;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.RobotoM {
+  font-family: 'Roboto-Medium', sans-serif
+}
+
+.RobotoR {
+  font-family: 'Roboto-Regular', sans-serif
 }
 </style>

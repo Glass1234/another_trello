@@ -2,8 +2,8 @@
   <div class="flex">
     <div class="flex-col bg-[#cfd9e7] border-t border-r border-[#bcc7d7] min-w-[120px] text-center min-h-screen">
       <div class="mx-[10px] flex justify-center">
-        <img @click="go_boards" class="cursor-pointer rounded hover:bg-[#afb7c3]"
-             src="@/assets/icons/undo_FILL0_wght400_GRAD0_opsz48.svg" alt="img" style="height: 25px">
+        <img @click="go_boards" class="cursor-pointer rounded hover:bg-[#afb7c3] h-[25px]"
+             src="@/assets/icons/undo_FILL0_wght400_GRAD0_opsz48.svg" alt="img">
       </div>
       <div class="py-[19px] border-y border-[#bcc7d7]">
         <span>{{ board.name }}</span>
@@ -11,15 +11,13 @@
       <div class="select-none cursor-pointer">
         <div v-for="dask in boards" v-bind:key="dask">
           <template v-if="dask.id === board.id">
-            <div class="bg-[#afb7c3] my-[5px] mx-[10px] p-[2px] rounded"
-                 style="overflow-wrap: break-word;">
+            <div class="bg-[#afb7c3] my-[5px] mx-[10px] p-[2px] rounded overflowStyle">
               {{ dask.name }}
             </div>
           </template>
           <template v-else>
             <div @click="go_boards_id(dask.id)"
-                 class="hover:bg-[#afb7c3] my-[5px] mx-[10px] p-[2px] rounded"
-                 style="overflow-wrap: break-word;">
+                 class="hover:bg-[#afb7c3] my-[5px] mx-[10px] p-[2px] rounded overflowStyle">
               {{ dask.name }}
             </div>
           </template>
@@ -42,9 +40,8 @@
               <div class="w-full">
                 <div
                     @click="go_modal(col,index)"
-                    style="word-wrap: break-word;"
                     data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    class="rounded p-[3px] pl-[5px] bg-white cursor-pointer select-none hover:bg-[#f4f5f7]">
+                    class="rounded p-[3px] pl-[5px] bg-white cursor-pointer select-none hover:bg-[#f4f5f7] WR_break_word">
                   <span>{{ columns.tasks[index].msg }}</span>
                 </div>
               </div>
@@ -68,9 +65,8 @@
             </template>
             <template v-else>
               <button @click="is_add_card=col; msg_card=''"
-                      class="w-full flex rounded pl-[10px] hover:bg-[#dbdce3]">
-                <span class="text-[#5e6c84]"
-                      style="font-family: 'Roboto-Light',sans-serif">
+                      class="w-full flex rounded pl-[10px] hover:bg-[#dbdce3] RobotoL">
+                <span class="text-[#5e6c84]">
                   + Добавить карточку
                 </span>
               </button>
@@ -327,5 +323,17 @@ export default {
 
 .bg_color {
   background-color: v-bind('board.background_color');
+}
+
+.overflowStyle {
+  overflow-wrap: break-word;
+}
+
+.WR_break_word {
+  word-wrap: break-word;
+}
+
+.RobotoL {
+  font-family: 'Roboto-Light', sans-serif
 }
 </style>

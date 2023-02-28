@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import Header_ from "@/components/Header_.vue";
-import Main_web from "@/components/Main_web.vue";
+import Header_ from "@/components/MainPage/Header_.vue";
+import Main_web from "@/components/MainPage/Main_web.vue";
 
 export default {
   name: "Main_page",
